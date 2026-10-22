@@ -1,7 +1,6 @@
 // src/features/runway/components/BookCover/BookCover.tsx
-// 责任：把「书名、作者、封面设定」画成一本书的封面。
-// 它不知道自己在哪里出现（舞台、列表都可以），尺寸由外面决定。
 
+import type { ReactNode } from "react";
 import { MOTIF_ART } from "./motifs";
 import "./BookCover.scss";
 import type { Look } from "../../domain/runwaySchema";
@@ -11,9 +10,10 @@ import { cx } from "../../../../shared/lib/cx";
 type BookCoverProps = {
   readonly look: Pick<Look, "book" | "cover">;
   readonly className?: string;
+  readonly children?: ReactNode;
 };
 
-export function BookCover({ look, className }: BookCoverProps) {
+export function BookCover({ look, className, children }: BookCoverProps) {
   const { book, cover } = look;
   const Art = MOTIF_ART[cover.motif];
 
@@ -30,6 +30,8 @@ export function BookCover({ look, className }: BookCoverProps) {
         <p className="book-cover__title">{book.title}</p>
         <p className="book-cover__author">{book.author}</p>
       </div>
+
+      {children}
     </div>
   );
 }

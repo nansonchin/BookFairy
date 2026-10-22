@@ -1,3 +1,5 @@
+// src/shared/styles/_base.scss
+
 @use "tokens";
 
 :root {
@@ -48,6 +50,18 @@ img,
 svg {
   display: block;
   max-width: 100%;
+}
+
+// 只给屏幕阅读器看的文字（视觉上隐藏）
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 :focus-visible {

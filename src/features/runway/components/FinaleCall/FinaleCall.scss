@@ -1,0 +1,32 @@
+// src/features/runway/components/FinaleCall/FinaleCall.scss
+
+.finale-call {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+  text-align: center;
+
+  &__message {
+    max-width: 22ch;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  &__cta {
+    padding: 0.9rem 1.6rem;
+    border-radius: 999px;
+    background: var(--color-teal);
+    color: var(--color-stage);
+    font-weight: 700;
+    text-decoration: none;
+    pointer-events: auto;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}

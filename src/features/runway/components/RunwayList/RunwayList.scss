@@ -1,0 +1,43 @@
+// src/features/runway/components/RunwayList/RunwayList.scss
+
+@use "../../../../shared/styles/mixins" as *;
+
+.runway-list {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+
+  &__items {
+    display: grid;
+    gap: 4rem;
+  }
+
+  &__item {
+    display: grid;
+    gap: 1.5rem;
+
+    @include from(tablet) {
+      grid-template-columns: 14rem 1fr;
+      align-items: center;
+    }
+  }
+
+  &__cover {
+    max-width: 14rem;
+  }
+
+  &__body {
+    display: grid;
+    gap: 1rem;
+  }
+
+  &__drop {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+
+  &__finale {
+    margin-top: 5rem;
+  }
+}

@@ -1,0 +1,95 @@
+// src/features/runway/components/LookScene/LookScene.scss
+
+@use "../../../../shared/styles/mixins" as *;
+
+.scene {
+  position: absolute;
+  inset: 0;
+  perspective: 1200px;
+  perspective-origin: 50% 45%;
+  pointer-events: none;
+
+  &__book {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 25%;
+    width: clamp(9rem, 28svh, 19rem);
+    margin-inline: auto;
+
+    @include from(tablet) {
+      bottom: 12%;
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    top: 5.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    max-width: 20rem;
+
+    @include from(tablet) {
+      top: auto;
+      bottom: 18%;
+      left: 5vw;
+      right: auto;
+    }
+  }
+
+  &__polaroid {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    width: 6.5rem;
+
+    @include from(tablet) {
+      right: 6vw;
+      bottom: 16%;
+      width: 12rem;
+    }
+  }
+}
+
+.polaroid {
+  margin: 0;
+  padding: 0.6rem 0.6rem 1rem;
+  background: var(--color-paper);
+  color: var(--color-stage);
+  box-shadow: 0 1rem 2rem -0.5rem rgb(0 0 0 / 0.6);
+
+  &__photo {
+    aspect-ratio: 1;
+    margin-bottom: 0.75rem;
+    // 一张简化的「照片」：上面是天，下面是放书的地面
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--photo) 60%, white) 0 58%,
+      var(--photo) 58% 100%
+    );
+  }
+
+  &__city {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  &__place {
+    display: none; // 手机上空间不够，只留城市和日期
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    opacity: 0.8;
+
+    @include from(tablet) {
+      display: block;
+    }
+  }
+
+  &__date {
+    margin-top: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    opacity: 0.65;
+  }
+}
