@@ -1,10 +1,22 @@
 import { z } from "zod";
+import { normalizeIsbn } from "./isbn";
 
-const HexColor = z.string().regex(/^#[0-9a-f]{6}$/i, "Expected a 6-digit hex color such as #2ec4b6");
-const IsoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Expected a date such as 2026-03-08");
+const HexColor = z
+  .string()
+  .regex(/^#[0-9a-f]{6}$/i, "Expected a 6-digit hex color such as #2ec4b6");
+const IsoDate = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/, "Expected a date such as 2026-03-08");
 const NonEmpty = z.string().min(1);
 
-export const COVER_MOTIFS = ["rings", "waves", "stripes", "moon", "dots", "diamonds"] as const;
+export const COVER_MOTIFS = [
+  "rings",
+  "waves",
+  "stripes",
+  "moon",
+  "dots",
+  "diamonds",
+] as const;
 export const CoverMotifSchema = z.enum(COVER_MOTIFS);
 
 export const DROP_STATUSES = ["waiting", "found"] as const;
@@ -21,12 +33,35 @@ export const LookRecordSchema = z.object({
   id: NonEmpty,
   number: z.number().int().positive(),
   collectionId: NonEmpty,
-  book: z.object({ title: NonEmpty, author: NonEmpty }),
-  cover: z.object({ background: HexColor, ink: HexColor, motif: CoverMotifSchema }),
+  book: z.object({
+    title: NonEmpty,
+    author: NonEmpty,
+    isbn: z
+      .string()
+      .transform((value)=>{
+        const normalized = normalizeIsbn(value);
+        if(!normalized){
+          throw new Error("Invalid ISBN")
+        }
+        return normalized
+      })
+      .optional(),
+    coverUrl: z.string().url().optional(),
+  }),
+  cover: z.object({
+    background: HexColor,
+    ink: HexColor,
+    motif: CoverMotifSchema,
+  }),
   spotlight: HexColor,
   status: DropStatusSchema.default("found"),
   concept: NonEmpty,
-  drop: z.object({ city: NonEmpty, country: NonEmpty, place: NonEmpty, date: IsoDate }),
+  drop: z.object({
+    city: NonEmpty,
+    country: NonEmpty,
+    place: NonEmpty,
+    date: IsoDate,
+  }),
   backstage: NonEmpty,
 });
 

@@ -52,4 +52,37 @@
     letter-spacing: 0.03em;
     opacity: 0.85;
   }
+
+    // 真实封面：铺满整个封面框。真实封面比例不一定正好 2:3，所以用 cover 裁掉一点边
+  &__photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: book-cover-photo-in 0.5s ease-out;
+  }
+
+  // 画出来的那层不删，只是变透明：读屏软件仍能读到书名和作者
+  &--photo &__art,
+  &--photo &__text {
+    opacity: 0;
+  }
+
+  // 书脊阴影要盖在真实封面上面，看起来才像一本实体书
+  &--photo::before {
+    z-index: 1;
+  }
+}
+
+@keyframes book-cover-photo-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-cover__photo {
+    animation: none;
+  }
 }

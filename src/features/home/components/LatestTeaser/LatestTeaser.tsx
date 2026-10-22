@@ -37,7 +37,7 @@ export function LatestTeaser({ looks }: LatestTeaserProps) {
               className="teaser__book"
               aria-label={`${look.book.title}, dropped in ${look.drop.city}`}
             >
-              <BookCover look={look} />
+              <BookCover look={look} size="M"/>
               <span className="teaser__city">{look.drop.city}</span>
               <StatusPill status={look.status} />
             </Link>

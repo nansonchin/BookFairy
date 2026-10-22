@@ -26,7 +26,7 @@ export function FinaleCall({ looks, onSelect }: FinaleCallProps) {
               onClick={(event) => onSelect(look, event.currentTarget.querySelector<HTMLElement>(".book-cover"))}
               aria-label={`${look.book.title}, dropped in ${look.drop.city}. View details`}
             >
-              <BookCover look={look} />
+              <BookCover look={look}  size="M"/>
               <span className="finale-call__city">{look.drop.city}</span>
             </button>
           </li>

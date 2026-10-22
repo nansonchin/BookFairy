@@ -37,7 +37,7 @@ export function BookWall({ looks }: BookWallProps) {
         }
         return (
           <div key={index} className="book-wall__tile" data-wall-look={look.id}>
-            <BookCover look={look} />
+            <BookCover look={look}  size="M"/>
           </div>
         );
       })}

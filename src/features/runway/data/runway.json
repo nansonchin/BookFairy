@@ -18,7 +18,7 @@
       "id": "look-01",
       "number": 1,
       "collectionId": "debut",
-      "book": { "title": "The Lantern Keeper", "author": "Mira Okafor" },
+      "book": { "title": "The Lantern Keeper", "author": "Mira Okafor", "isbn":"9781651156926" },
       "cover": { "background": "#1f4e5f", "ink": "#f3ebdd", "motif": "rings" },
       "spotlight": "#2ec4b6",
       "concept": "A small light carried through a very large dark.",
