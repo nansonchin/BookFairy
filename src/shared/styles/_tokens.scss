@@ -1,0 +1,21 @@
+// src/shared/styles/_tokens.scss
+
+$colors: (
+  "stage": #07161a,
+  "stage-raised": #0e2a30,
+  "teal": #2ec4b6,
+  "paper": #f3ebdd,
+  "amber": #f2c46d,
+  "coral": #ff7a6b,
+);
+
+$fonts: (
+  "display": ("Fraunces", "Times New Roman", serif),
+  "body": ("DM Sans", system-ui, sans-serif),
+  "mono": ("DM Mono", ui-monospace, monospace),
+);
+
+$breakpoints: (
+  "tablet": 768px,
+  "desktop": 1100px,
+);
