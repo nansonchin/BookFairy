@@ -1,28 +1,26 @@
 // src/features/runway/animation/runwayTiming.ts
+// 所有时间/距离常量集中在这里。单位：timeline 秒（不是真实秒，滚动会拉伸它）。
 
 export const INTRO = {
-  curtain: 1.6,
-  overlap: 0.8,
+  delay: 0.3,
+  fade: 0.8,
+  overlap: 0.6, // 第一本书比标题淡出提前多久开始
 } as const;
 
 export const LOOK = {
   enter: 1.4,
-  pose: 1.0,
-  flash: 0.3,
-  hold: 0.4,
+  hold: 1.0,
   exit: 1.0,
-  overlap: 0.7,
+  overlap: 0.7, // 下一本书提前开始的时间
 } as const;
 
 export const WALK = {
-  startZ: -1400,
-  swayDegrees: 2.5,
-  strides: 4,
-} as const;
-
-export const POSE = {
-  turnDegrees: 14,
-  scale: 1.04,
+  startZ: -1500,
+  startY: 60,
+  startTurn: -28,
+  poseTurn: -9,
+  holdTurn: -3,
+  exitZ: 520,
 } as const;
 
 export const RIBBON = {
@@ -30,15 +28,19 @@ export const RIBBON = {
   duration: 0.75,
 } as const;
 
-export const FINALE = {
-  walkIn: 1.4,
-  stagger: 0.18, 
-  gap: 1.1, 
-  maxScale: 0.55, 
-  textLead: 0.8, 
-  photoDelay: 0.15,
-  flash: 0.3,
-  hold: 1.2,
+// 背景书墙的透明度。dim 必须和 BookWall.scss 里的 opacity 一致。
+export const WALL = {
+  dim: 0.12,
+  lit: 0.55,
+  finale: 0.22,
 } as const;
 
-export const SCROLL_VH_PER_UNIT = 35;
+export const FINALE = {
+  text: 0.7,
+  itemRise: 0.9,
+  itemLead: 0.2,
+  stagger: 0.12,
+  hold: 0.8,
+} as const;
+
+export const SCROLL_VH_PER_UNIT = 30;

@@ -1,0 +1,11 @@
+// src/shared/components/SiteFooter/SiteFooter.scss
+
+.site-footer {
+  display: grid;
+  min-height: 30svh;
+  place-items: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0.7;
+}

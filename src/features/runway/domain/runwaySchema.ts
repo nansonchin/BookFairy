@@ -7,6 +7,9 @@ const NonEmpty = z.string().min(1);
 export const COVER_MOTIFS = ["rings", "waves", "stripes", "moon", "dots", "diamonds"] as const;
 export const CoverMotifSchema = z.enum(COVER_MOTIFS);
 
+export const DROP_STATUSES = ["waiting", "found"] as const;
+export const DropStatusSchema = z.enum(DROP_STATUSES);
+
 export const CollectionSchema = z.object({
   id: NonEmpty,
   name: NonEmpty,
@@ -21,6 +24,7 @@ export const LookRecordSchema = z.object({
   book: z.object({ title: NonEmpty, author: NonEmpty }),
   cover: z.object({ background: HexColor, ink: HexColor, motif: CoverMotifSchema }),
   spotlight: HexColor,
+  status: DropStatusSchema.default("found"),
   concept: NonEmpty,
   drop: z.object({ city: NonEmpty, country: NonEmpty, place: NonEmpty, date: IsoDate }),
   backstage: NonEmpty,
@@ -31,6 +35,7 @@ export const RunwayDataSchema = z.object({
   looks: z.array(LookRecordSchema).min(1),
 });
 
+export type DropStatus = z.infer<typeof DropStatusSchema>;
 export type CoverMotif = z.infer<typeof CoverMotifSchema>;
 export type Collection = z.infer<typeof CollectionSchema>;
 export type LookRecord = z.infer<typeof LookRecordSchema>;

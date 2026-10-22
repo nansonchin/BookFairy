@@ -1,0 +1,102 @@
+// src/features/home/components/HomeHero/HomeHero.scss
+
+.home-hero {
+  --spotlight: var(--color-brand);
+
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: 100svh;
+  overflow: hidden;
+  padding-block: 8rem 4rem;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    // 书墙在首页是静止的背景，只做一点缓慢漂移（用独立的 translate 属性，不干扰 rotate / scale）
+    .book-wall {
+      animation: home-wall-drift 24s ease-in-out infinite alternate;
+    }
+  }
+
+  &__glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      60% 55% at 50% 40%,
+      color-mix(in srgb, var(--spotlight) 30%, transparent),
+      transparent 70%
+    );
+  }
+
+  &__vignette {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(90% 80% at 50% 45%, transparent 25%, var(--color-stage) 90%),
+      linear-gradient(transparent 60%, var(--color-stage));
+  }
+
+  &__inner {
+    position: relative;
+    display: grid;
+    justify-items: start;
+    gap: 1.6rem;
+  }
+
+  &__headline {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 13vw, 12rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 0.86;
+    text-transform: uppercase;
+
+    em {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      text-transform: none;
+    }
+  }
+
+  // 每行一个裁切框：文字从框的下边缘「升」上来
+  &__line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.06em;
+
+    i {
+      display: block;
+      font-style: normal;
+    }
+  }
+
+  &__lede {
+    max-width: 34rem;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    line-height: 1.45;
+    opacity: 0.8;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+}
+
+@keyframes home-wall-drift {
+  to {
+    translate: -40px -30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero__backdrop .book-wall {
+    animation: none;
+  }
+}

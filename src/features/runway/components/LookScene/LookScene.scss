@@ -5,91 +5,66 @@
 .scene {
   position: absolute;
   inset: 0;
-  perspective: 1200px;
+  perspective: 1300px;
   perspective-origin: 50% 45%;
   pointer-events: none;
 
-  &__book {
+  // 巨大的描边城市名，躺在书的后面。用 translate 居中，不占用 GSAP 的 transform
+  &__city {
     position: absolute;
-    inset-inline: 0;
-    bottom: 25%;
-    width: clamp(9rem, 28svh, 19rem);
-    margin-inline: auto;
+    left: 50%;
+    top: 40%;
+    translate: -50% -50%;
+    font-family: var(--font-display);
+    font-size: clamp(5.5rem, 21vw, 20rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 0.8;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(236 231 220 / 0.22);
 
     @include from(tablet) {
-      bottom: 12%;
+      top: 46%;
+    }
+  }
+
+  &__book {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    translate: -50% -50%;
+    width: clamp(9rem, 30svh, 24rem);
+    transform-style: preserve-3d;
+
+    @include from(tablet) {
+      top: 46%;
+      width: clamp(9rem, 36svh, 24rem);
     }
   }
 
   &__caption {
     position: absolute;
-    top: 5.5rem;
-    left: 1.5rem;
-    right: 1.5rem;
-    max-width: 20rem;
+    left: clamp(1rem, 3vw, 2.5rem);
+    bottom: clamp(1.25rem, 5svh, 3.5rem);
+    max-width: min(26rem, calc(100vw - 2rem));
 
-    @include from(tablet) {
-      top: auto;
-      bottom: 18%;
-      left: 5vw;
-      right: auto;
+    .look-caption__backstage {
+      display: none;
+
+      @include from(tablet) {
+        display: block;
+      }
     }
   }
 
-  &__polaroid {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    width: 6.5rem;
-
-    @include from(tablet) {
-      right: 6vw;
-      bottom: 16%;
-      width: 12rem;
-    }
-  }
-}
-
-.polaroid {
-  margin: 0;
-  padding: 0.6rem 0.6rem 1rem;
-  background: var(--color-paper);
-  color: var(--color-stage);
-  box-shadow: 0 1rem 2rem -0.5rem rgb(0 0 0 / 0.6);
-
-  &__photo {
-    aspect-ratio: 1;
-    margin-bottom: 0.75rem;
-    // 一张简化的「照片」：上面是天，下面是放书的地面
-    background: linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--photo) 60%, white) 0 58%,
-      var(--photo) 58% 100%
-    );
-  }
-
-  &__city {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 600;
-    line-height: 1.1;
-  }
-
-  &__place {
-    display: none; // 手机上空间不够，只留城市和日期
-    margin-top: 0.25rem;
-    font-size: 0.75rem;
-    opacity: 0.8;
-
-    @include from(tablet) {
-      display: block;
-    }
-  }
-
-  &__date {
-    margin-top: 0.35rem;
+  &__where {
+    margin-top: 0.9rem;
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    opacity: 0.65;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.55;
   }
 }

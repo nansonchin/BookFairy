@@ -2,10 +2,11 @@
 
 import { formatLookNumber } from "../../domain/format";
 import type { Look } from "../../domain/runwaySchema";
+import { StatusPill } from "../StatusPill/StatusPill";
 import "./LookCaption.scss";
 
 type LookCaptionProps = {
-  readonly look: Pick<Look, "number" | "collection" | "concept" | "backstage">;
+  readonly look: Pick<Look, "number" | "collection" | "concept" | "backstage" | "status">;
 };
 
 export function LookCaption({ look }: LookCaptionProps) {
@@ -16,6 +17,7 @@ export function LookCaption({ look }: LookCaptionProps) {
       </p>
       <p className="look-caption__concept">{look.concept}</p>
       <p className="look-caption__backstage">{look.backstage}</p>
+      <StatusPill status={look.status} />
     </div>
   );
 }

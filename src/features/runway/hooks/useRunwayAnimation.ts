@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SCROLL_VH_PER_UNIT } from "../animation/runwayTiming";
 import type { Look } from "../domain/runwaySchema";
+import { createAmbientMotion } from "../animation/createAmbientMotion";
 import { createRunwayTimeline } from "../animation/createRunwayTimeline";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,6 +16,7 @@ export function useRunwayAnimation(stageRef: RefObject<HTMLElement | null>, look
     if (!stage) return;
 
     const context = gsap.context(() => {
+      createAmbientMotion(stage);
       const timeline = createRunwayTimeline(stage, looks);
 
       ScrollTrigger.create({

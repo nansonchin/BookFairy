@@ -1,73 +1,41 @@
 // src/features/runway/components/RunwayStage/RunwayStage.scss
 
 .stage {
-  --spotlight: var(--color-teal);
+  --spotlight: var(--color-brand);
 
   position: relative;
   height: 100svh;
   overflow: hidden;
   background: var(--color-stage);
 
-  &__floor {
-    position: absolute;
-    inset: 45% 0 0;
-    background:
-      linear-gradient(to bottom, var(--color-stage) 0%, transparent 40%),
-      repeating-linear-gradient(90deg, rgb(243 235 221 / 0.05) 0 1px, transparent 1px 6rem),
-      linear-gradient(to bottom, var(--color-stage-raised), var(--color-stage));
-  }
-
-  // 跑道：上窄下宽的梯形，汇聚到地平线
-  &__runway {
-    position: absolute;
-    inset: 45% 0 0;
-    clip-path: polygon(47% 0, 53% 0, 92% 100%, 8% 100%);
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      color-mix(in srgb, var(--spotlight) 32%, var(--color-stage-raised))
-    );
-  }
-
-  &__spot {
+  // 光晕：颜色跟着当前这本书变，finale 回到品牌绿
+  &__glow {
     position: absolute;
     inset: 0;
     background: radial-gradient(
-      ellipse 55% 70% at 50% 62%,
+      60% 55% at 50% 48%,
       color-mix(in srgb, var(--spotlight) 38%, transparent),
       transparent 70%
     );
-    mix-blend-mode: screen;
     pointer-events: none;
   }
 
-  // 幕布：两片，各占 50.5%，中间稍微重叠，合上时看不到缝
-  &__curtain {
+  &__vignette {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 10;
-    width: 50.5%;
+    inset: 0;
     background:
-      linear-gradient(to bottom, rgb(0 0 0 / 0.35), transparent 30%, transparent 70%, rgb(0 0 0 / 0.45)),
-      repeating-linear-gradient(
-        90deg,
-        rgb(0 0 0 / 0.38) 0,
-        rgb(0 0 0 / 0) 1.4rem,
-        rgb(255 255 255 / 0.05) 2.6rem,
-        rgb(0 0 0 / 0.38) 4rem
-      ),
-      color-mix(in srgb, var(--color-teal) 24%, var(--color-stage-raised));
+      radial-gradient(90% 80% at 50% 50%, transparent 30%, var(--color-stage) 92%),
+      linear-gradient(var(--color-stage), transparent 18%, transparent 78%, var(--color-stage));
+    pointer-events: none;
+  }
 
-    &--left {
-      left: 0;
-      box-shadow: 0.5rem 0 2rem rgb(0 0 0 / 0.5);
-    }
-
-    &--right {
-      right: 0;
-      box-shadow: -0.5rem 0 2rem rgb(0 0 0 / 0.5);
-    }
+  &__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
   }
 
   &__title {
@@ -77,51 +45,55 @@
     display: grid;
     align-content: center;
     justify-items: center;
-    gap: 1rem;
+    gap: 1.4rem;
     padding: 2rem 1.5rem;
     text-align: center;
     pointer-events: none;
   }
 
-  &__kicker {
+  &__kicker,
+  &__hint {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--color-amber);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.6;
   }
 
   &__headline {
-    max-width: 14ch;
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 9vw, 7rem);
-    font-weight: 600;
-    line-height: 1;
-    text-wrap: balance;
+    font-size: clamp(3.25rem, 12vw, 11.5rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 0.86;
+    text-transform: uppercase;
+
+    em {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      text-transform: none;
+    }
   }
 
-  &__hint {
-    margin-top: 1.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    opacity: 0.7;
+  // 每行一个裁切框：文字从框的下边缘「升」上来
+  &__line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.06em;
+
+    i {
+      display: block;
+      font-style: normal;
+    }
   }
 
   &__finale {
     position: absolute;
-    inset-inline: 0;
-    top: 12%;
+    inset: 0;
     z-index: 15;
     display: grid;
-    justify-items: center;
-    padding-inline: 1.5rem;
-    pointer-events: none;
-  }
-
-  &__flash {
-    position: absolute;
-    inset: 0;
-    z-index: 20;
-    background: #fff;
-    opacity: 0;
-    pointer-events: none;
+    place-items: center;
+    padding: 5rem 1rem 2rem;
   }
 }

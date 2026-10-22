@@ -3,17 +3,21 @@
 .look-caption {
   display: grid;
   gap: 0.6rem;
+  justify-items: start;
 
   &__no {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     color: var(--spotlight);
   }
 
   &__concept {
-    font-family: var(--font-display);
-    font-size: clamp(1.25rem, 2.6vw, 1.9rem);
-    line-height: 1.2;
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+    font-style: italic;
+    line-height: 1.12;
     text-wrap: balance;
   }
 

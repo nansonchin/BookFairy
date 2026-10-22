@@ -1,0 +1,18 @@
+// src/features/runway/components/BookWall/BookWall.scss
+
+.book-wall {
+  position: absolute;
+  inset: -20%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: 1rem;
+  // 用独立的 rotate/scale 属性，这样 GSAP 对 transform 的 x/y 漂移不会把它们覆盖掉
+  rotate: -7deg;
+  scale: 1.15;
+  pointer-events: none;
+
+  &__tile {
+    opacity: 0.12; // 必须和 runwayTiming.ts 里的 WALL.dim 一致
+    filter: blur(1.2px) saturate(0.8);
+  }
+}

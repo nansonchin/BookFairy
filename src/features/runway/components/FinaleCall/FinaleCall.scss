@@ -1,28 +1,95 @@
 // src/features/runway/components/FinaleCall/FinaleCall.scss
 
+@use "../../../../shared/styles/mixins" as *;
+
 .finale-call {
   display: grid;
   justify-items: center;
-  gap: 1.5rem;
+  gap: clamp(1.25rem, 4svh, 2.75rem);
+  width: 100%;
+  max-width: 75rem;
   text-align: center;
 
   &__message {
-    max-width: 22ch;
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 4vw, 2.75rem);
-    font-weight: 600;
-    line-height: 1.15;
+    max-width: 16ch;
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 4vw, 3.6rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.05;
     text-wrap: balance;
   }
 
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(0.5rem, 1.6vw, 1.4rem);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__slot {
+    flex: 0 0 28%;
+
+    @include from(tablet) {
+      flex: 1 1 0;
+      max-width: 9.5rem;
+    }
+  }
+
+  // GSAP 会占用 li 的 transform，所以悬停动效放在里面的封面上
+  &__book {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    .book-cover {
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    &:hover .book-cover,
+    &:focus-visible .book-cover {
+      transform: translateY(-0.75rem) scale(1.04);
+    }
+  }
+
+  &__city {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  &__tip {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
   &__cta {
-    padding: 0.9rem 1.6rem;
+    padding: 0.95rem 1.6rem;
     border-radius: 999px;
-    background: var(--color-teal);
+    background: var(--color-brand);
     color: var(--color-stage);
+    font-size: 0.8rem;
     font-weight: 700;
+    letter-spacing: 0.06em;
     text-decoration: none;
-    pointer-events: auto;
+    text-transform: uppercase;
     transition: transform 0.2s ease;
 
     &:hover {

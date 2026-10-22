@@ -1,36 +1,35 @@
 // src/App.tsx
-// 责任：决定「现在该显示什么」：加载中、出错，还是走秀（或它的降级版本）。
+// 责任：路由。首页 = 介绍；/latest = 最新放出的书（走秀）。
 
-import { RunwayList } from "./features/runway/components/RunwayList/RunwayList";
-import { RunwayStage } from "./features/runway/components/RunwayStage/RunwayStage";
-import { useLooks } from "./features/runway/hooks/useLooks";
-import { usePrefersReducedMotion } from "./shared/hooks/usePrefersReducedMotion";
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { HomePage } from "./pages/HomePage";
+import { LatestPage } from "./pages/LatestPage";
+import { ScrollToTop } from "./shared/components/ScrollToTop";
+import { SiteFooter } from "./shared/components/SiteFooter/SiteFooter";
+import { SiteHeader } from "./shared/components/SiteHeader/SiteHeader";
 import "./App.scss";
 
-export default function App() {
-  const state = useLooks();
-  const reducedMotion = usePrefersReducedMotion();
-
-  if (state.status === "loading") return <p className="status">Backstage...</p>;
-
-  if (state.status === "error") {
-    return (
-      <p className="status" role="alert">
-        Could not load the runway: {state.error.message}
-      </p>
-    );
-  }
-
+function Layout() {
   return (
     <>
-      <main>
-        <h1 className="sr-only">The Book Fairies Runway</h1>
-        {reducedMotion ? <RunwayList looks={state.looks} /> : <RunwayStage looks={state.looks} />}
-      </main>
-
-      <footer className="app-end">
-        <p>An unofficial concept design for The Book Fairies. Every book and cover shown here is fictional.</p>
-      </footer>
+      <ScrollToTop />
+      <SiteHeader />
+      <Outlet />
+      <SiteFooter />
     </>
   );
-} 
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="latest" element={<LatestPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}

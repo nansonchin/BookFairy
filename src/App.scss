@@ -1,17 +1,7 @@
 // src/App.scss
 
 .status {
-  padding: 4rem 1.5rem;
+  padding: 6rem 1.5rem 4rem;
   font-family: var(--font-mono);
   white-space: pre-line;
-}
-
-.app-end {
-  display: grid;
-  min-height: 30svh;
-  place-items: center;
-  padding: 2rem 1.5rem;
-  font-size: 0.9rem;
-  text-align: center;
-  opacity: 0.7;
 }

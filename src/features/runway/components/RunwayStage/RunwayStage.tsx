@@ -2,44 +2,55 @@
 
 import { useRef } from "react";
 import { useRunwayAnimation } from "../../hooks/useRunwayAnimation";
+import { BookWall } from "../BookWall/BookWall";
 import { FinaleCall } from "../FinaleCall/FinaleCall";
 import { LookScene } from "../LookScene/LookScene";
 import "./RunwayStage.scss";
 import type { Look } from "../../domain/runwaySchema";
+import type { SelectDrop } from "../../domain/selection";
 
 type RunwayStageProps = {
   readonly looks: readonly Look[];
+  readonly onSelect: SelectDrop;
 };
 
-export function RunwayStage({ looks }: RunwayStageProps) {
+export function RunwayStage({ looks, onSelect }: RunwayStageProps) {
   const stageRef = useRef<HTMLElement>(null);
 
   useRunwayAnimation(stageRef, looks);
 
   return (
-    <section ref={stageRef} className="stage" aria-label="The runway show">
-      <div className="stage__floor" aria-hidden="true" />
-      <div className="stage__runway" aria-hidden="true" />
-      <div className="stage__spot" aria-hidden="true" />
+    <section ref={stageRef} className="stage" aria-label="Latest book drops">
+      <div className="stage__glow" aria-hidden="true" />
+      <BookWall looks={looks} />
+      <div className="stage__vignette" aria-hidden="true" />
+      <div className="stage__grain" aria-hidden="true" />
 
       {looks.map((look) => (
         <LookScene key={look.id} look={look} />
       ))}
 
       <div className="stage__finale" data-part="finale-text">
-        <FinaleCall />
+        <FinaleCall looks={looks} onSelect={onSelect} />
       </div>
-
-      <div className="stage__curtain stage__curtain--left" data-part="curtain-left" aria-hidden="true" />
-      <div className="stage__curtain stage__curtain--right" data-part="curtain-right" aria-hidden="true" />
 
       <div className="stage__title" data-part="intro-title" aria-hidden="true">
-        <p className="stage__kicker">An unofficial concept for The Book Fairies</p>
-        <p className="stage__headline">The Book Fairies Runway</p>
-        <p className="stage__hint">Scroll to begin the show</p>
+        <p className="stage__kicker">Free books, left in the wild</p>
+        <div className="stage__headline">
+          <span className="stage__line">
+            <i data-part="intro-line">Books</i>
+          </span>
+          <span className="stage__line">
+            <i data-part="intro-line">
+              that <em>leave</em>
+            </i>
+          </span>
+          <span className="stage__line">
+            <i data-part="intro-line">the shelf</i>
+          </span>
+        </div>
+        <p className="stage__hint">Scroll — the latest drops</p>
       </div>
-
-      <div className="stage__flash" data-part="flash" aria-hidden="true" />
     </section>
   );
 }

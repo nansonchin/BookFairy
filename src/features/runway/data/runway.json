@@ -80,6 +80,7 @@
     },
     {
       "id": "look-05",
+      "status": "waiting",
       "number": 5,
       "collectionId": "night-bloom",
       "book": { "title": "Marigold Static", "author": "Diego Ibarra" },
@@ -92,10 +93,11 @@
         "place": "A flower stall at the Mercado de Jamaica",
         "date": "2026-09-14"
       },
-      "backstage": "Wrapped in tissue paper. The florist read the first chapter standing up."
+      "backstage": "Wrapped in tissue paper, waiting for its reader."
     },
     {
       "id": "look-06",
+      "status": "waiting",
       "number": 6,
       "collectionId": "night-bloom",
       "book": { "title": "An Inventory of Small Hours", "author": "Fiona Beaumont" },
@@ -108,7 +110,7 @@
         "place": "The window seat of a Grassmarket cafe",
         "date": "2026-10-03"
       },
-      "backstage": "Still there at closing time. Picked up by the last customer."
+      "backstage": "Still there at closing time. Could be yours."
     }
   ]
 }

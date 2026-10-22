@@ -1,0 +1,60 @@
+// src/shared/components/SiteHeader/SiteHeader.scss
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20; // 高于舞台标题(11)和 finale(15)，低于详情(40)
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 1.1rem) clamp(1rem, 3vw, 2.5rem) 1.6rem;
+  background: linear-gradient(to bottom, rgb(11 11 12 / 0.85), transparent);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none; // 渐变区域不挡住下面的内容，只有链接可点
+
+  a {
+    color: rgb(236 231 220 / 0.6);
+    text-decoration: none;
+    pointer-events: auto;
+    transition: color 0.2s ease;
+
+    &:hover,
+    &[aria-current="page"] {
+      color: var(--color-paper);
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+
+  &__live {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  &__dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--color-brand);
+    animation: header-pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes header-pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header__dot {
+    animation: none;
+  }
+}

@@ -1,0 +1,28 @@
+// src/shared/components/LinkButton/LinkButton.scss
+
+.link-button {
+  display: inline-block;
+  padding: 0.95rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &--solid {
+    background: var(--color-brand);
+    color: var(--color-stage);
+  }
+
+  &--ghost {
+    border-color: rgb(236 231 220 / 0.3);
+    color: var(--color-paper);
+  }
+}

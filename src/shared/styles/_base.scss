@@ -11,7 +11,7 @@
     --font-#{$name}: #{$stack};
   }
 
-  --spotlight: var(--color-teal);
+  --spotlight: var(--color-brand);
 }
 
 *,
@@ -22,6 +22,7 @@
 
 html {
   color-scheme: dark;
+  scrollbar-gutter: stable; // 打开详情时锁住滚动，页面不会因为滚动条消失而跳动
 }
 
 body {
@@ -65,6 +66,23 @@ svg {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-teal);
+  outline: 2px solid var(--color-brand);
   outline-offset: 3px;
+}
+
+// 通用版心
+.container {
+  width: 100%;
+  max-width: 75rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
+}
+
+// 小号等宽大写标签：全站统一的「眉题」
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.6;
 }

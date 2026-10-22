@@ -1,0 +1,117 @@
+// src/features/runway/components/DropDetail/DropDetail.scss
+
+@use "../../../../shared/styles/mixins" as *;
+
+.drop-detail {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 5rem 1.25rem 2rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgb(11 11 12 / 0.78);
+    backdrop-filter: blur(18px);
+    pointer-events: none; // 点击穿透到外层，由外层判断「点了背景」
+  }
+
+  &__close {
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 1.1rem);
+    right: clamp(1rem, 3vw, 2.5rem);
+    padding: 0.65rem 0.9rem;
+    border: 1px solid rgb(236 231 220 / 0.2);
+    border-radius: 999px;
+    background: none;
+    color: inherit;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  &__card {
+    position: relative; // 压在 backdrop 上面
+    display: grid;
+    gap: 1.5rem;
+    justify-items: start;
+    width: 100%;
+    max-width: 57rem;
+
+    @include from(tablet) {
+      grid-template-columns: minmax(10rem, 17rem) 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+  }
+
+  &__cover {
+    width: 9.5rem;
+
+    @include from(tablet) {
+      width: 100%;
+    }
+  }
+
+  &__city {
+    margin-bottom: 0.6rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.86;
+    text-transform: uppercase;
+  }
+
+  &__concept {
+    margin-bottom: 1.4rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+    font-style: italic;
+    line-height: 1.15;
+  }
+
+  &__facts {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.65rem 1.1rem;
+    margin: 0 0 1.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: rgb(236 231 220 / 0.55);
+
+    dd {
+      margin: 0;
+      color: var(--color-paper);
+    }
+
+    small {
+      display: block;
+      margin-top: 0.25rem;
+      color: rgb(236 231 220 / 0.55);
+      font-size: inherit;
+    }
+  }
+
+  &__cta {
+    padding: 0.95rem 1.6rem;
+    border-radius: 999px;
+    background: var(--color-brand);
+    color: var(--color-stage);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+
