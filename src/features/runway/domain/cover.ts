@@ -1,4 +1,3 @@
-import { normalizeIsbn } from "./isbn";
 import type { Look } from "./runwaySchema";
 
 export type CoverSize ="S"|"M"|"L";
