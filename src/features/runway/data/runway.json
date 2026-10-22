@@ -1,0 +1,114 @@
+{
+  "collections": [
+    {
+      "id": "debut",
+      "name": "The Debut Collection",
+      "season": "Season 01",
+      "tagline": "Six stories step out of the shelf and into the world."
+    },
+    {
+      "id": "night-bloom",
+      "name": "Night Bloom",
+      "season": "Season 02",
+      "tagline": "Books for the hours when the city goes quiet."
+    }
+  ],
+  "looks": [
+    {
+      "id": "look-01",
+      "number": 1,
+      "collectionId": "debut",
+      "book": { "title": "The Lantern Keeper", "author": "Mira Okafor" },
+      "cover": { "background": "#1f4e5f", "ink": "#f3ebdd", "motif": "rings" },
+      "spotlight": "#2ec4b6",
+      "concept": "A small light carried through a very large dark.",
+      "drop": {
+        "city": "Tokyo",
+        "country": "Japan",
+        "place": "A bench by the Shinjuku Gyoen gate",
+        "date": "2026-03-08"
+      },
+      "backstage": "Tied with a teal ribbon. Gone within the hour."
+    },
+    {
+      "id": "look-02",
+      "number": 2,
+      "collectionId": "debut",
+      "book": { "title": "Salt and Paper", "author": "Inês Valadares" },
+      "cover": { "background": "#f3ebdd", "ink": "#1f4e5f", "motif": "waves" },
+      "spotlight": "#f2c46d",
+      "concept": "Letters that never reached the sea, finally delivered.",
+      "drop": {
+        "city": "Lisbon",
+        "country": "Portugal",
+        "place": "The tram stop below Miradouro da Graça",
+        "date": "2026-03-08"
+      },
+      "backstage": "Left between two postcards. Someone added a third."
+    },
+    {
+      "id": "look-03",
+      "number": 3,
+      "collectionId": "debut",
+      "book": { "title": "Seven Rivers Home", "author": "Wanjiru Kamau" },
+      "cover": { "background": "#ff7a6b", "ink": "#07161a", "motif": "stripes" },
+      "spotlight": "#ff7a6b",
+      "concept": "Seven journeys, one kitchen table at the end of all of them.",
+      "drop": {
+        "city": "Nairobi",
+        "country": "Kenya",
+        "place": "A reading corner at the Nairobi Railway Museum",
+        "date": "2026-04-02"
+      },
+      "backstage": "The first copy to leave the country by bus."
+    },
+    {
+      "id": "look-04",
+      "number": 4,
+      "collectionId": "night-bloom",
+      "book": { "title": "The Moon Lends Nothing", "author": "Sigrún Halldórsdóttir" },
+      "cover": { "background": "#0e2a30", "ink": "#f2c46d", "motif": "moon" },
+      "spotlight": "#f2c46d",
+      "concept": "Four winters, one borrowed lamp, and a neighbour who never knocks.",
+      "drop": {
+        "city": "Reykjavik",
+        "country": "Iceland",
+        "place": "A swimming-pool changing room, top shelf",
+        "date": "2026-09-14"
+      },
+      "backstage": "Found by a lifeguard on her night shift."
+    },
+    {
+      "id": "look-05",
+      "number": 5,
+      "collectionId": "night-bloom",
+      "book": { "title": "Marigold Static", "author": "Diego Ibarra" },
+      "cover": { "background": "#2ec4b6", "ink": "#07161a", "motif": "dots" },
+      "spotlight": "#2ec4b6",
+      "concept": "A radio that only plays songs from tomorrow.",
+      "drop": {
+        "city": "Mexico City",
+        "country": "Mexico",
+        "place": "A flower stall at the Mercado de Jamaica",
+        "date": "2026-09-14"
+      },
+      "backstage": "Wrapped in tissue paper. The florist read the first chapter standing up."
+    },
+    {
+      "id": "look-06",
+      "number": 6,
+      "collectionId": "night-bloom",
+      "book": { "title": "An Inventory of Small Hours", "author": "Fiona Beaumont" },
+      "cover": { "background": "#f2c46d", "ink": "#1f4e5f", "motif": "diamonds" },
+      "spotlight": "#f2c46d",
+      "concept": "A night porter lists everything the city does while it sleeps.",
+      "drop": {
+        "city": "Edinburgh",
+        "country": "United Kingdom",
+        "place": "The window seat of a Grassmarket cafe",
+        "date": "2026-10-03"
+      },
+      "backstage": "Still there at closing time. Picked up by the last customer."
+    }
+  ]
+}
