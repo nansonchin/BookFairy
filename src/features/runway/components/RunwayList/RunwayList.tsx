@@ -11,10 +11,9 @@ import "./RunwayList.scss";
 
 type RunwayListProps = {
   readonly looks: readonly Look[];
-  readonly onSelect: SelectDrop;
 };
 
-export function RunwayList({ looks, onSelect }: RunwayListProps) {
+export function RunwayList({ looks }: RunwayListProps) {
   return (
     <section className="runway-list" aria-label="The runway show">
       <ol className="runway-list__items">
@@ -32,7 +31,7 @@ export function RunwayList({ looks, onSelect }: RunwayListProps) {
       </ol>
 
       <div className="runway-list__finale">
-        <FinaleCall looks={looks} onSelect={onSelect} />
+        <FinaleCall looks={looks} />
       </div>
     </section>
   );

@@ -16,7 +16,6 @@ export function HomePage() {
   const mainRef = useRef<HTMLElement>(null);
   useReveal(mainRef);
 
-  // 数据没好或加载失败时，首页照样能看（只是没有书墙和「最新」板块）
   const looks = state.status === "ready" ? state.looks : null;
 
   return (

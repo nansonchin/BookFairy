@@ -21,6 +21,10 @@ export function listCountries(looks:readonly Look[]):string[]{
     return [...new Set(looks.map((look)=>look.drop.country))].sort((a,b)=>a.localeCompare(b))
 }
 
+export function findLook(looks:readonly Look[], id:string|undefined):Look|null{
+    return id? (looks.find((look)=>look.id === id)?? null) : null
+}
+
 export function parseFunction(params:URLSearchParams,knownCountries:readonly string[]):DropFilters{
     const status = params.get("status")
     const country = params.get("country")

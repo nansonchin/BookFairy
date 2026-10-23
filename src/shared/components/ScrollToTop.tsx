@@ -3,13 +3,18 @@
 
 import { useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { readBackground } from "../lib/backgroundLocation";
 
 export function ScrollToTop() {
-  const { pathname } = useLocation();
+  const location = useLocation();
+
+  const {pathname} = readBackground(location)?? location
+
+  const page= pathname.split('/')[1]?? "";
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [page]);
 
   return null;
 }

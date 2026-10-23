@@ -38,7 +38,7 @@ export const LookRecordSchema = z.object({
     author: NonEmpty,
     isbn: z
       .string()
-      .refine((value)=>normalizeIsbn(value)!==null,"Invalidd ISBN")
+      .refine((value)=>normalizeIsbn(value)!==null,"Invalid ISBN")
       .transform((value)=> normalizeIsbn(value)??value)
       .optional(),
     coverUrl: z.string().url().optional(),

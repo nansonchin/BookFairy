@@ -11,10 +11,9 @@ import type { SelectDrop } from "../../domain/selection";
 
 type RunwayStageProps = {
   readonly looks: readonly Look[];
-  readonly onSelect: SelectDrop;
 };
 
-export function RunwayStage({ looks, onSelect }: RunwayStageProps) {
+export function RunwayStage({ looks }: RunwayStageProps) {
   const stageRef = useRef<HTMLElement>(null);
 
   useRunwayAnimation(stageRef, looks);
@@ -31,7 +30,7 @@ export function RunwayStage({ looks, onSelect }: RunwayStageProps) {
       ))}
 
       <div className="stage__finale" data-part="finale-text">
-        <FinaleCall looks={looks} onSelect={onSelect} />
+        <FinaleCall looks={looks}/>
       </div>
 
       <div className="stage__title" data-part="intro-title" aria-hidden="true">

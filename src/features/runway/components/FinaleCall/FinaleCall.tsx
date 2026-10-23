@@ -1,18 +1,18 @@
 // src/features/runway/components/FinaleCall/FinaleCall.tsx
-// 责任：收尾画面——一排可以点开的书 + 加入妖精的 CTA。
 
 import type { Look } from "../../domain/runwaySchema";
-import type { SelectDrop } from "../../domain/selection";
 import { STICKERS_URL } from "../../../../shared/lib/links";
 import { BookCover } from "../BookCover/BookCover";
 import "./FinaleCall.scss";
+import { useDropLink } from "../../hooks/useDropLink";
+import { Link } from "react-router-dom";
 
 type FinaleCallProps = {
   readonly looks: readonly Look[];
-  readonly onSelect: SelectDrop;
 };
 
-export function FinaleCall({ looks, onSelect }: FinaleCallProps) {
+export function FinaleCall({ looks }: FinaleCallProps) {
+  const dropLink = useDropLink()
   return (
     <div className="finale-call">
       <p className="finale-call__message">Somewhere right now, a book is waiting on a bench.</p>
@@ -20,15 +20,14 @@ export function FinaleCall({ looks, onSelect }: FinaleCallProps) {
       <ul className="finale-call__row">
         {looks.map((look) => (
           <li key={look.id} className="finale-call__slot" data-part="finale-item">
-            <button
-              type="button"
+            <Link
+              {...dropLink(look.id)}
               className="finale-call__book"
-              onClick={(event) => onSelect(look, event.currentTarget.querySelector<HTMLElement>(".book-cover"))}
               aria-label={`${look.book.title}, dropped in ${look.drop.city}. View details`}
             >
               <BookCover look={look}  size="M"/>
               <span className="finale-call__city">{look.drop.city}</span>
-            </button>
+            </Link>
           </li>
         ))}
       </ul>

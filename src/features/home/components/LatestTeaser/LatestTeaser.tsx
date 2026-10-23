@@ -7,6 +7,7 @@ import { BookCover } from "../../../runway/components/BookCover/BookCover";
 import { StatusPill } from "../../../runway/components/StatusPill/StatusPill";
 import "./LatestTeaser.scss";
 import { sortNewestFirst } from "../../../runway/domain/drop";
+import { useDropLink } from "../../../runway/hooks/useDropLink";
 
 const TEASER_COUNT = 3;
 
@@ -16,8 +17,8 @@ type LatestTeaserProps = {
 
 export function LatestTeaser({ looks }: LatestTeaserProps) {
   if (!looks) return null;
-
-  const latest = sortNewestFirst(looks).slice(0,TEASER_COUNT)
+  const dropLink = useDropLink();
+  const latest = sortNewestFirst(looks).slice(0, TEASER_COUNT);
 
   return (
     <section className="teaser container" aria-labelledby="teaser-title">
@@ -25,7 +26,7 @@ export function LatestTeaser({ looks }: LatestTeaserProps) {
         <h2 id="teaser-title" className="teaser__title">
           Latest drops
         </h2>
-        <Link className="teaser__all" to="/latest">
+        <Link className="teaser__all" to="/drops">
           See all →
         </Link>
       </div>
@@ -34,11 +35,12 @@ export function LatestTeaser({ looks }: LatestTeaserProps) {
         {latest.map((look) => (
           <li key={look.id} className="teaser__slot">
             <Link
-              to="/latest"
+              {...dropLink(look.id)}
               className="teaser__book"
+              data-drop-id={look.id}
               aria-label={`${look.book.title}, dropped in ${look.drop.city}`}
             >
-              <BookCover look={look} size="M"/>
+              <BookCover look={look} size="M" />
               <span className="teaser__city">{look.drop.city}</span>
               <StatusPill status={look.status} />
             </Link>

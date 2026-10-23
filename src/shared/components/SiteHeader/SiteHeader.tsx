@@ -15,6 +15,7 @@ export function SiteHeader() {
         <NavLink to="/" end>
           Home
         </NavLink>
+        <NavLink to="/drops">All drops</NavLink>
         <NavLink to="/latest" className="site-header__live">
           <span className="site-header__dot" aria-hidden="true" />
           Latest drops

@@ -58,3 +58,13 @@
     animation: none;
   }
 }
+
+@media (max-width:34rem){
+  .site-header{
+    justify-content: flex-end;
+  }
+
+  .site-header__brand{
+    display: none;
+  }
+}
