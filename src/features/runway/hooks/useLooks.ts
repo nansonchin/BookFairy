@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Look } from "../domain/runwaySchema";
-import { fetchLooks } from "../data/runwayRespository";
+import { fetchLooks } from "../data/runwayRepository";
 
 export type LooksState =
   | { readonly status: "loading" }

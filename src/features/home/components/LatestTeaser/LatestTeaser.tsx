@@ -6,6 +6,7 @@ import type { Look } from "../../../runway/domain/runwaySchema";
 import { BookCover } from "../../../runway/components/BookCover/BookCover";
 import { StatusPill } from "../../../runway/components/StatusPill/StatusPill";
 import "./LatestTeaser.scss";
+import { sortNewestFirst } from "../../../runway/domain/drop";
 
 const TEASER_COUNT = 3;
 
@@ -16,7 +17,7 @@ type LatestTeaserProps = {
 export function LatestTeaser({ looks }: LatestTeaserProps) {
   if (!looks) return null;
 
-  const latest = [...looks].sort((a, b) => b.number - a.number).slice(0, TEASER_COUNT);
+  const latest = sortNewestFirst(looks).slice(0,TEASER_COUNT)
 
   return (
     <section className="teaser container" aria-labelledby="teaser-title">

@@ -1,7 +1,7 @@
 // src/features/runway/components/RunwayList/RunwayList.tsx
 
-import { cssVars } from "../../../../shared/lib/cssVar";
-import { formatDropDate } from "../../domain/format";
+import { cssVars } from "../../../../shared/lib/cssVars";
+import { formatDropDate, formatDropWhere } from "../../domain/format";
 import type { Look } from "../../domain/runwaySchema";
 import type { SelectDrop } from "../../domain/selection";
 import { BookCover } from "../BookCover/BookCover";
@@ -24,7 +24,7 @@ export function RunwayList({ looks, onSelect }: RunwayListProps) {
             <div className="runway-list__body">
               <LookCaption look={look} />
               <p className="runway-list__drop">
-                {look.drop.place}, {look.drop.city} · {formatDropDate(look.drop.date)}
+                {formatDropWhere(look)} · {formatDropDate(look.drop.date)}
               </p>
             </div>
           </li>

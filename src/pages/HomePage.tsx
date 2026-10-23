@@ -9,9 +9,10 @@ import { LatestTeaser } from "../features/home/components/LatestTeaser/LatestTea
 import { Stats } from "../features/home/components/Stats/Stats";
 import { useReveal } from "../features/home/hooks/useReveal";
 import { useLooks } from "../features/runway/hooks/useLooks";
+import { useLooksState } from "../features/runway/context/LooksContext";
 
 export function HomePage() {
-  const state = useLooks();
+  const state = useLooksState();
   const mainRef = useRef<HTMLElement>(null);
   useReveal(mainRef);
 

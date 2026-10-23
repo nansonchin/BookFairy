@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { MOTIF_ART } from "./motifs";
 import "./BookCover.scss";
 import type { Look } from "../../domain/runwaySchema";
-import { cssVars } from "../../../../shared/lib/cssVar";
+import { cssVars } from "../../../../shared/lib/cssVars";
 import { cx } from "../../../../shared/lib/cx";
 import { coverUrlFor, type CoverSize } from "../../domain/cover";
 import { useCoverImage } from "../../hooks/useCoverImage";

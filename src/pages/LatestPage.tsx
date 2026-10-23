@@ -8,9 +8,10 @@ import { RunwayStage } from "../features/runway/components/RunwayStage/RunwaySta
 import type { DropSelection, SelectDrop } from "../features/runway/domain/selection";
 import { useLooks } from "../features/runway/hooks/useLooks";
 import { usePrefersReducedMotion } from "../shared/hooks/usePrefersReducedMotion";
+import { useLooksState } from "../features/runway/context/LooksContext";
 
 export function LatestPage() {
-  const state = useLooks();
+  const state = useLooksState();
   const reducedMotion = usePrefersReducedMotion();
   const [selected, setSelected] = useState<DropSelection | null>(null);
 

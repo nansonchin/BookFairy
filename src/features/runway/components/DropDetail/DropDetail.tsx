@@ -7,7 +7,7 @@ import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 import { usePrefersReducedMotion } from "../../../../shared/hooks/usePrefersReducedMotion";
 import { STICKERS_URL } from "../../../../shared/lib/links";
-import { formatDropDate } from "../../domain/format";
+import { formatDropDate, formatDropWhere } from "../../domain/format";
 import type { DropSelection } from "../../domain/selection";
 import { BookCover } from "../BookCover/BookCover";
 import { StatusPill } from "../StatusPill/StatusPill";
@@ -38,13 +38,24 @@ export function DropDetail({ selection, onClose }: DropDetailProps) {
     const cover = root.querySelector<HTMLElement>(".drop-detail__cover");
 
     const context = gsap.context(() => {
-      gsap.fromTo(".drop-detail__backdrop", { opacity: 0 }, { opacity: 1, duration: 0.5 });
+      gsap.fromTo(
+        ".drop-detail__backdrop",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5 },
+      );
 
       if (reducedMotion || !cover || !origin?.isConnected) return;
 
       origin.style.visibility = "hidden"; // 原来的那本书「被拿起来」了
       Flip.fit(cover, origin, { scale: true, duration: 0 });
-      gsap.to(cover, { x: 0, y: 0, scaleX: 1, scaleY: 1, duration: 0.8, ease: "power3.inOut" });
+      gsap.to(cover, {
+        x: 0,
+        y: 0,
+        scaleX: 1,
+        scaleY: 1,
+        duration: 0.8,
+        ease: "power3.inOut",
+      });
       gsap.from(".drop-detail__body > *", {
         y: 24,
         opacity: 0,
@@ -92,7 +103,10 @@ export function DropDetail({ selection, onClose }: DropDetailProps) {
     }
 
     gsap.to(".drop-detail__backdrop", { opacity: 0, duration: 0.45 });
-    gsap.to(".drop-detail__body, .drop-detail__close", { opacity: 0, duration: 0.2 });
+    gsap.to(".drop-detail__body, .drop-detail__close", {
+      opacity: 0,
+      duration: 0.2,
+    });
     Flip.fit(cover, origin, {
       scale: true,
       duration: 0.6,
@@ -130,7 +144,12 @@ export function DropDetail({ selection, onClose }: DropDetailProps) {
     >
       <div className="drop-detail__backdrop" aria-hidden="true" />
 
-      <button ref={closeButtonRef} type="button" className="drop-detail__close" onClick={requestClose}>
+      <button
+        ref={closeButtonRef}
+        type="button"
+        className="drop-detail__close"
+        onClick={requestClose}
+      >
         Close ✕
       </button>
 
@@ -150,16 +169,10 @@ export function DropDetail({ selection, onClose }: DropDetailProps) {
             </dd>
             <dt>Where</dt>
             <dd>
-              {waiting ? (
-                <>
-                  {look.drop.city}, {look.drop.country}
-                  <small>Exact spot revealed once found</small>
-                </>
-              ) : (
-                <>
-                  {look.drop.place}, {look.drop.city}
-                </>
-              )}
+              <dd>
+                {formatDropWhere(look)}
+                {waiting && <small>Exact spot revealed once found</small>}
+              </dd>
             </dd>
             <dt>Dropped</dt>
             <dd>{formatDropDate(look.drop.date)}</dd>
@@ -167,7 +180,12 @@ export function DropDetail({ selection, onClose }: DropDetailProps) {
             <dd>{look.backstage}</dd>
           </dl>
 
-          <a className="drop-detail__cta" href={STICKERS_URL} target="_blank" rel="noopener noreferrer">
+          <a
+            className="drop-detail__cta"
+            href={STICKERS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Leave a book like this
           </a>
         </div>
