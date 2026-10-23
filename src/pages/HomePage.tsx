@@ -8,7 +8,6 @@ import { JoinCta } from "../features/home/components/JoinCta/JoinCta";
 import { LatestTeaser } from "../features/home/components/LatestTeaser/LatestTeaser";
 import { Stats } from "../features/home/components/Stats/Stats";
 import { useReveal } from "../features/home/hooks/useReveal";
-import { useLooks } from "../features/runway/hooks/useLooks";
 import { useLooksState } from "../features/runway/context/LooksContext";
 
 export function HomePage() {

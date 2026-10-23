@@ -13,6 +13,7 @@ import { BookCover } from "../BookCover/BookCover";
 import { StatusPill } from "../StatusPill/StatusPill";
 import "./DropDetail.scss";
 import type { Look } from "../../domain/runwaySchema";
+import { DropPhoto } from "../DropPhoto/DropPhoto";
 
 gsap.registerPlugin(Flip);
 
@@ -213,6 +214,7 @@ export function DropDetail({ look, onClose }: DropDetailProps) {
             Leave a book like this
           </a>
         </div>
+        <DropPhoto look={look}/>
       </div>
     </div>
   );

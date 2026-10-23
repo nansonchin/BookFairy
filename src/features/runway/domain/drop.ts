@@ -13,7 +13,7 @@ export function sortNewestFirst(looks:readonly Look[]):Look[]{
 
 export function filterDrops(looks:readonly Look[],filters:DropFilters):Look[]{
     return looks.filter(
-        (look)=>(filters.status === null || filters.status === filters.status) && (filters.country === null || look.drop.country === filters.country)
+        (look)=>(filters.status === null || look.status === filters.status) && (filters.country === null || look.drop.country === filters.country)
     )
 }
 

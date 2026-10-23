@@ -8,6 +8,7 @@ const IsoDate = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}$/, "Expected a date such as 2026-03-08");
 const NonEmpty = z.string().min(1);
+const ImageSrc = z.string().refine((value)=>value.startsWith("http://")|| value.startsWith("/"),"Expected an https URL or a /path")
 
 export const COVER_MOTIFS = [
   "rings",
@@ -17,6 +18,12 @@ export const COVER_MOTIFS = [
   "dots",
   "diamonds",
 ] as const;
+
+const PhotoSchema = z.object({
+  url:ImageSrc,
+  alt:NonEmpty,
+  credit:NonEmpty.optional()
+})
 export const CoverMotifSchema = z.enum(COVER_MOTIFS);
 
 export const DROP_STATUSES = ["waiting", "found"] as const;
@@ -50,6 +57,7 @@ export const LookRecordSchema = z.object({
   }),
   spotlight: HexColor,
   status: DropStatusSchema.default("found"),
+  photo:PhotoSchema.optional(),
   concept: NonEmpty,
   drop: z.object({
     city: NonEmpty,

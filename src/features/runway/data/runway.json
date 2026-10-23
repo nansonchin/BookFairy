@@ -28,6 +28,11 @@
         "place": "A bench by the Shinjuku Gyoen gate",
         "date": "2026-03-08"
       },
+      "photo":{
+        "url":"/demo/demo-l1.png",
+        "alt":"A book that was leave",
+        "credit":"@Demo_Fairy"
+      },
       "backstage": "Tied with a ribbon. Gone within the hour."
     },
     {

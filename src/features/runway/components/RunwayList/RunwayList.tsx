@@ -3,7 +3,6 @@
 import { cssVars } from "../../../../shared/lib/cssVars";
 import { formatDropDate, formatDropWhere } from "../../domain/format";
 import type { Look } from "../../domain/runwaySchema";
-import type { SelectDrop } from "../../domain/selection";
 import { BookCover } from "../BookCover/BookCover";
 import { FinaleCall } from "../FinaleCall/FinaleCall";
 import { LookCaption } from "../LookCaption/LookCaption";

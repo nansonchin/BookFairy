@@ -7,7 +7,7 @@ import { FinaleCall } from "../FinaleCall/FinaleCall";
 import { LookScene } from "../LookScene/LookScene";
 import "./RunwayStage.scss";
 import type { Look } from "../../domain/runwaySchema";
-import type { SelectDrop } from "../../domain/selection";
+
 
 type RunwayStageProps = {
   readonly looks: readonly Look[];

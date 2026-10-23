@@ -1,6 +1,6 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import { useLooksState } from "../features/runway/context/LooksContext";
-import "../styles/Dropspage.scss";
+import "../styles/DropsPage.scss";
 import { useCallback, useMemo } from "react";
 import {
   filterDrops,
