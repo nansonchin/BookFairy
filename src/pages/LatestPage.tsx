@@ -1,9 +1,11 @@
 import { RunwayList } from "../features/runway/components/RunwayList/RunwayList";
 import { RunwayStage } from "../features/runway/components/RunwayStage/RunwayStage";
 import { useLooksState } from "../features/runway/context/LooksContext";
+import { usePageTitle } from "../shared/hooks/usePageTitle";
 import { usePrefersReducedMotion } from "../shared/hooks/usePrefersReducedMotion";
 
 export function LatestPage() {
+  usePageTitle("Latest Drop Book Page | The Book Fairies")
   const state = useLooksState();
   const reducedMotion = usePrefersReducedMotion();
 

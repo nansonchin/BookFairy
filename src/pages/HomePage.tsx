@@ -9,11 +9,13 @@ import { LatestTeaser } from "../features/home/components/LatestTeaser/LatestTea
 import { Stats } from "../features/home/components/Stats/Stats";
 import { useReveal } from "../features/home/hooks/useReveal";
 import { useLooksState } from "../features/runway/context/LooksContext";
+import { usePageTitle } from "../shared/hooks/usePageTitle";
 
 export function HomePage() {
   const state = useLooksState();
   const mainRef = useRef<HTMLElement>(null);
   useReveal(mainRef);
+  usePageTitle();
 
   const looks = state.status === "ready" ? state.looks : null;
 

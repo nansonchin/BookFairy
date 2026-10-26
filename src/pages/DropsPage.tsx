@@ -14,8 +14,11 @@ import {
 import { DropRoute } from "../features/runway/components/DropRoute/DropRoute";
 import { DropCard } from "../features/runway/components/DropCard/DropCard";
 import { DropFilterBar } from "../features/runway/components/DropFilterBar/DropFilterBar";
+import { usePageTitle } from "../shared/hooks/usePageTitle";
 
 export function DropPage() {
+  usePageTitle("All drops | The Book Fairies");
+
   const state = useLooksState();
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();

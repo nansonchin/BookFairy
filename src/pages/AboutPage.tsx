@@ -6,10 +6,12 @@ import {
   FAQ_PROJECT,
   FAQ_SITE,
 } from "../features/about/data/aboutContent";
+import { usePageTitle } from "../shared/hooks/usePageTitle";
 import { ABOUT_URL, STICKERS_URL } from "../shared/lib/links";
 import "../styles/AboutPage.scss";
 
 export function AboutPage() {
+  usePageTitle("About & FAQ | The Book Fairies")
   return (
     <main className="about-page container">
 
