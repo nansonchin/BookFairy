@@ -1,0 +1,53 @@
+// features/about/components/FaqItem/FaqItem.scss
+
+.faq-item {
+  border-top: 1px solid rgb(236 231 220 / 0.15);
+
+  summary {
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  &__q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    cursor: pointer;
+    user-select: none;
+
+    &::after {
+      content: "+";
+      flex-shrink: 0;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--color-brand);
+      transition: transform 0.25s ease;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-brand);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+  }
+
+  &[open] &__q::after {
+    content: "–";
+  }
+
+  &__a {
+    max-width: 54ch;
+    padding-bottom: 1.25rem;
+    line-height: 1.65;
+    opacity: 0.8;
+  }
+}

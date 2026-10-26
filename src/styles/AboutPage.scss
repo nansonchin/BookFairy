@@ -1,0 +1,113 @@
+
+.about-page {
+  display: grid;
+  gap: clamp(3rem, 8svh, 6rem);
+  padding-block: 8rem 4rem;
+
+  > * {
+    max-width: 44rem;
+  }
+
+  // video 和 hero 不受正文宽度限制，它们需要更宽
+  &__video-section,
+  &__hero {
+    max-width: 60rem;
+  }
+
+  &__hero {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  &__lede {
+    line-height: 1.65;
+    opacity: 0.8;
+
+    a {
+      color: var(--color-paper);
+      text-underline-offset: 3px;
+    }
+  }
+
+  &__section-title {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  &__project-intro {
+    line-height: 1.65;
+    opacity: 0.8;
+    margin: 0;
+
+    a {
+      color: var(--color-paper);
+      text-underline-offset: 3px;
+    }
+  }
+
+  &__video-section {
+    display: grid;
+    gap: 1rem;
+  }
+
+  &__official-link {
+    padding-block: 1.25rem;
+    border-top: 1px solid rgb(236 231 220 / 0.15);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    a {
+      color: var(--color-brand);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__cta {
+    display: grid;
+    gap: 1rem;
+    padding: clamp(2rem, 5svh, 4rem) 0;
+    border-top: 1px solid rgb(236 231 220 / 0.15);
+  }
+
+  &__cta-text {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    font-style: italic;
+    line-height: 1.1;
+  }
+
+  &__cta-link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-brand);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

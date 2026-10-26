@@ -20,6 +20,7 @@ import { readBackground } from "./shared/lib/backgroundLocation";
 import React from "react";
 import { DropPage } from "./pages/DropsPage";
 import { DropRoute } from "./features/runway/components/DropRoute/DropRoute";
+import { AboutPage } from "./pages/AboutPage";
 
 function Layout() {
   return (
@@ -43,6 +44,7 @@ function AppRoutes(){
             <Route index element={<HomePage />} />
             <Route path="latest" element={<LatestPage />} />
             <Route path="drops/:id?" element={<DropPage/>}/>
+            <Route path="about" element={<AboutPage/>}/>
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
